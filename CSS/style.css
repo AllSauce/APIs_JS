@@ -1,0 +1,33 @@
+#pMap {
+    height: 350px;
+    width: 400px;
+    margin-left: 900px;
+    margin-top: 10px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    margin-left: 340px;
+    margin-top: 140px;
+}
+
+.p {
+    color: black;
+    font-family: 'Garamond', serif;
+    font-size: 20px;
+    margin-left: 340px;
+    margin-right: 350px;
+}
+
+.p1 {
+    color: grey;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-left: 340px;
+}
+
+.p2 {
+    color: grey;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-left: 340px;
+}
+
