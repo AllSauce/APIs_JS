@@ -13,7 +13,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
     $sql = "SELECT * FROM users WHERE username=?";
     $stmt = mysqli_stmt_init($con);
-    
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     
     
 
