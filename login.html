@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
+    <link rel="stylesheet" type ="text/css" href="CSS/style.css">
+    <title>Login</title>
+    <meta charset="utf-8">	
+    
 </head>
-    
-<body>
-    
-</body>
 
+    <body>
+        <div>
+
+            <form action="login.php" method="post">
+                <fieldset class = "fs">
+                    <legend>Login</legend>
+                    <div>
+                        <label for="username" class="label">Username:</label>
+                        <input type="text" name="username" id="username" class="input" required>
+                    </div>
+                    <div>
+                        <label for="password" class = "label">Password:</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <div>
+                        <input type="submit" value="Login">
+                    </div>
+
+                </fieldset>
+                    
+                
+            </form>
+        </div>
+
+        <div id ="Nologin">
+            <a href ="register.html">Don't have an Account?</a>
+            
+        </div>
+                                    
+        
+    </body>
 </html>

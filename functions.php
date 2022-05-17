@@ -8,7 +8,7 @@ function check_login($con){
         $user_data = $result->fetchArray();
         return $user_data;
     }
-    else{
+    else{        
         header("Location: login.html");
         die;
     }

@@ -8,10 +8,10 @@ include("functions.php");
 if($_SERVER['REQUEST_METHOD'] == "POST" ){
     echo $_POST['username'];
     echo $_POST['password'];
-    echo $_POST['email'];
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $email = $_POST['email'];
+    
 
     $result = $con->query("SELECT * FROM users WHERE username = '$username'");
 
@@ -20,20 +20,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
         die;
     }
 
-    $result = $con->query("SELECT * FROM users WHERE email = '$email'");
-    if($result->num_rows > 0){
-        header("Location: register.html?error=2");
-        die;
-    }
+    
     
     $hash = password_hash($password, PASSWORD_DEFAULT);
     echo $hash;
     echo '<br>';
     
-    $preparequery = "INSERT INTO Users(username, email, hash) VALUES(?,?,?)";
+    $preparequery = "INSERT INTO users(username, hash) VALUES(?,?)";
     var_dump($preparequery);
     $statement = $con->prepare($preparequery);
-    $statement->bind_param("sss", $username, $email, $hash);
+    $statement->bind_param("ss", $username, $hash);
     
     $statement->execute();
     $statement->close();
