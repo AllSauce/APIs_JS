@@ -8,11 +8,11 @@ $_SESSION;
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $result = $con->query("SELECT hash FROM users WHERE username = '$username'");
-    $hash;   
-    foreach($result as $row){
-        $hash = $row['hash'];
-    }
+    $usernamequery = "SELECT * FROM users WHERE username =  ?";
+    $usernameStatement = $con->prepare($usernamequery);
+    $usernameStatement->bind_param("s", $username);    
+    $hash = $usernameStatement->execute();
+    
     if(password_verify($password, $hash)){
         $selectPrepareQuery = "SELECT userid FROM users WHERE username = ?";
         $statement = $con->prepare($selectPrepareQuery);
