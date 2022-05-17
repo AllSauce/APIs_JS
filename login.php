@@ -17,21 +17,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    
-    
 
-    $rows = [];
-    while($row = mysqli_fetch_array($result))
-    {
-        $rows[] = $row;
+    if(!isset($result)){
+        header("Location: login.php?error=2");
+        die;
     }
-    
-    var_dump($rows);
-   
-    
-    
-    
-    /*if(password_verify($password, $hash)){
+    echo "<br>";
+
+    var_dump($result);
+    $hash = mysqli_fetch_assoc($result)['Hash'];
+    echo "<br>";
+    echo $hash;
+            
+    if(password_verify($password, $hash)){
         $selectPrepareQuery = "SELECT userid FROM users WHERE username = ?";
         $statement = $con->prepare($selectPrepareQuery);
         $statement->bind_param("s", $username);
@@ -45,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         header("Location: login.html?error=1");
         die;
     }
-    */
+    
 
 }
 

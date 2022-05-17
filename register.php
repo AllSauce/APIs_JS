@@ -13,7 +13,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
     $password = $_POST['password'];
     
 
-    $result = $con->query("SELECT * FROM users WHERE username = '$username'");
+    $sql = "SELECT * FROM users WHERE username=?";
+    $stmt = mysqli_stmt_init($con);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if($result->num_rows > 0){
         header("Location: register.html?error=2");
