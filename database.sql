@@ -40,10 +40,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Hash` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table sysdb.users: ~0 rows (approximately)
+-- Dumping data for table sysdb.users: ~2 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+REPLACE INTO `users` (`UserID`, `Username`, `Hash`) VALUES
+	(1, 'admin', '$2y$10$OvwtwFxW4KfuEiF2X.W3We/S.ESwMyd2nWDOniskcPnEdbB9optjC'),
+	(2, 'petter', '$2y$10$fOpf2v6FLk8vl5V1zVzVZe0NUfB1AQdpRZnV73dI/9c0xWgJGzprW');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
