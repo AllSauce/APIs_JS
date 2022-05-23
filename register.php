@@ -9,21 +9,32 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
     echo $_POST['username'];
     echo $_POST['password'];
     
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $email = $_POST['email'];
     
 
-    $sql = "SELECT * FROM users WHERE username=?";
-    $stmt = mysqli_stmt_init($con);
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $username);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    echo gettype($email);
 
-    if($result->num_rows > 0){
+    $sql = "SELECT * FROM users WHERE username=?";
+    $result = query_get1($con, $sql, $username);
+    $row = $result->fetchArray();
+
+    if($row != NULL){
         header("Location: register.html?error=2");
         die;
     }
+
+    $sql = "Select * from users where email=?";
+    $result = query_get1($con, $sql, $email);
+    $row = $result->fetchArray();
+
+    if($row != NULL){
+        header("Location: register.html?error=3");
+        die;
+    }
+
 
     
     
@@ -31,13 +42,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
     echo $hash;
     echo '<br>';
     
-    $preparequery = "INSERT INTO users(username, hash) VALUES(?,?)";
-    var_dump($preparequery);
-    $statement = $con->prepare($preparequery);
-    $statement->bind_param("ss", $username, $hash);
-    
-    $statement->execute();
-    $statement->close();
+    $sql = 'INSERT INTO users(username, Email, Hash) VALUES(?,?,?)';
+    $res = query_get3($con, $sql, $username, $email, $hash);
+
+    if(!$res){
+        header("Location: register.html?error=4");
+        echo "Failed to add to database";
+        die;
+    }
+    echo "Sucess";
     header("Location: login.html");
     die;
 
@@ -46,3 +59,4 @@ else{
     header("Location: register.html?error=1");
     die;
 }
+

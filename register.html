@@ -6,15 +6,20 @@
 
     <title>Register</title>
     <meta charset="utf-8">	
-    <link rel="stylesheet" type = "text/css" href="CSS/style.css">
+    <link rel="stylesheet" type = "text/css" href="./style.css">
     </head>
 
     <body>
         <div>
+            
 
             <form class = "inputform" action="register.php" method="POST">
                 <fieldset>
-                    <legend>Register</legend>                   
+                    <legend>Register</legend>
+                    <div>
+                        <label for="e-mail" class="label">E-mail:</label>
+                        <input type="text" name="email" id="email" class="input" required>
+                    </div>
                     <div>
                         <label for="username" class="label">username:</label>
                         <input type="text" name="username" id="username" class="input" required>

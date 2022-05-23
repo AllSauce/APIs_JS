@@ -1,5 +1,12 @@
 <?php
 
-    $db = new SQLite3("./db.db");
-
     
+
+    include ("connection.php");
+    include ("functions.php");
+
+    session_start();
+    session_destroy();
+    header("Location: login.html");
+    die;
+   
