@@ -1,48 +1,69 @@
 <!DOCTYPE html>
-
-
 <html>
 <head>
-
-    <title>Register</title>
-    <meta charset="utf-8">	
-    <link rel="stylesheet" type = "text/css" href="./style.css">
+    <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+    <title>Skapa konto</title>
     </head>
 
     <body>
-        <div>
-            
 
-            <form class = "inputform" action="register.php" method="POST">
-                <fieldset>
-                    <legend>Register</legend>
-                    <div>
-                        <label for="e-mail" class="label">E-mail:</label>
-                        <input type="text" name="email" id="email" class="input" required>
-                    </div>
-                    <div>
-                        <label for="username" class="label">username:</label>
-                        <input type="text" name="username" id="username" class="input" required>
-                    </div>
-                    <div>
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" id="password" required>
-                    </div>
-                    <div>
-                        <input type="submit" value="Register">
-                    </div>
+      <div class="header">
+      <nav>
+          <ul id="main-menu">
+            <li><a href="index.php"><img src="img/utegym-logo.png" id="logo"></a></li>
+            <li><a href="login.html">LOGGA IN</a></li>
+            <li><a href="register.html">SKAPA KONTO</a></li>
+          </ul>
+      </nav>
+    </div>
 
-                </fieldset>
-                    
-                
-            </form>
+
+    <div class="row">
+      <div class="column">
+        <div class="left-column">
+          <h1><b>Skapa konto</b></h1>
+          <br>
+          <p>Du behöver skapa ett konto hos oss för att nyttja vår kommentarsfunktion.</p>
+
         </div>
+      </div>
 
-        <div id ="login">
-            <a href ="login.html">Already Have an Account?</a>
-            
+      <div class="column">
+        <div class="right-column">
+          <form class = "inputform" action="register.php" method="POST">
+              <fieldset>
+                  <legend><b>Fyll i dina uppgifter</b></legend>
+                  <div>
+                      <label for="e-mail" class="label">E-mail:</label><br>
+                      <input type="text" name="email" id="email" class="input" required>
+                  </div>
+                  <div>
+                      <label for="username" class="label">Användarnamn:</label><br>
+                      <input type="text" name="username" id="username" class="input" required>
+                  </div>
+                  <div>
+                      <label for="password">Lösenord:</label><br>
+                      <input type="password" name="password" id="password" required>
+                  </div>
+                  <div>
+                      <br><input type="submit" value="Skapa konto">
+                  </div>
+
+              </fieldset>
+
+              <div id ="login">
+                  <a href ="login.html">Har du redan ett konto? Logga in!</a>
+              </div>
+          </form>
+
+
         </div>
-                                    
-        
+      </div>
+    </div>
+
+
+
+
     </body>
 </html>
