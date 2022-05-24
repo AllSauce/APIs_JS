@@ -138,6 +138,11 @@ label, input {
   margin-top:2px;
 }
 
+label {
+  font-size:10px;
+  font-weight: bold;
+}
+
 h3#comment {
   font-size:12px;
 }
