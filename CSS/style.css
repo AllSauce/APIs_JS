@@ -115,6 +115,11 @@ input[type=text] {
   padding:10px;
 }
 
+input[type=password] {
+  border-radius:10px;
+  padding:10px;
+}
+
 input[type=submit]:hover {
   background-color:#058036;
   cursor: pointer;
@@ -129,6 +134,10 @@ textarea {
   font-family: arial,sans-serif;
 }
 
+label, input {
+  margin-top:2px;
+}
+
 h3#comment {
   font-size:12px;
 }
@@ -140,4 +149,15 @@ p#comment {
 
 hr#comment {
   width:100%;
+}
+
+#login {
+  padding-top:20px;
+  font-size:12px;
+  text-align:right;
+  font-style:italic;
+}
+
+.inputform {
+  width:80%;
 }
