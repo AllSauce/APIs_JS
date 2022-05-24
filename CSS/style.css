@@ -1,12 +1,14 @@
 body {
   margin: 0;
   padding: 0;
+  padding-bottom:30px;
   font-family: arial,sans-serif;
 }
 
 h1 {
   font-family: arial,sans-serif;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 nav ul {
@@ -17,6 +19,12 @@ nav ul {
 nav ul li {
           display:inline;
 }
+
+hr {
+  width:85%;
+  margin-top:20px;
+}
+
 
 li:nth-child(2), li:last-child {
 float:right;
@@ -37,12 +45,12 @@ li:last-child {
   padding:10px;
 }
 
-a {
+a:link {
   text-decoration: none;
+  color:black;
 }
 
 a:visited {
-  font-color:#00AA44;
 
 }
 
@@ -54,6 +62,11 @@ a:visited {
 p.small-body {
   font-size: 10px;
 }
+
+p.small-body > a {
+  text-decoration:underline;
+}
+
 
 .row {
   display: flex;
@@ -80,10 +93,51 @@ p.small-body {
 
 #pMap {
     height: 350px;
-    width: 400px;
+    width: 80%;
     margin-top: 10px;
 }
 
 #comments {
   text-align: center;
+  width: 80%;
+}
+
+input[type=submit] {
+  background-color:#00AA44;
+  border-radius:10px;
+  border:none;
+  padding:10px;
+  color:white;
+}
+
+input[type=text] {
+  border-radius:10px;
+  padding:10px;
+}
+
+input[type=submit]:hover {
+  background-color:#058036;
+  cursor: pointer;
+}
+
+textarea {
+  width: 90%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: arial,sans-serif;
+}
+
+h3#comment {
+  font-size:12px;
+}
+
+p#comment {
+  font-size: 12px;
+  margin-top:-5px;
+}
+
+hr#comment {
+  width:100%;
 }
