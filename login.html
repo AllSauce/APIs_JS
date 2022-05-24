@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type ="text/css" href="style.css">
-    <title>Login</title>
-    <meta charset="utf-8">	
-    
-</head>
+    <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+    <title>Logga in</title>
+    </head>
 
     <body>
-        <div>
 
-            <form action="login.php" method="post">
-                <fieldset class = "fs">
-                    <legend>Login</legend>
+      <div class="header">
+      <nav>
+          <ul id="main-menu">
+            <li><a href="index.php"><img src="img/utegym-logo.png" id="logo"></a></li>
+            <li><a href="login.html">LOGGA IN</a></li>
+            <li><a href="register.html">SKAPA KONTO</a></li>
+          </ul>
+      </nav>
+    </div>
+
+
+    <div class="row">
+      <div class="column">
+        <div class="left-column">
+          <h1><b>Logga in</b></h1>
+          <br>
+          <p>Du behöver vara inloggad användare hos oss för att nyttja vår kommentarsfunktion.</p>
+
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="right-column">
+            <form class = "inputform" action="login.php" method="post">
+                <fieldset>
+                    <legend><b>Fyll i dina uppgifter</b></legend>
                     <div>
-                        <label for="username" class="label">Username:</label>
+                        <label for="username" class="label">Användarnamn:</label><br>
                         <input type="text" name="username" id="username" class="input" required>
                     </div>
                     <div>
-                        <label for="password" class = "label">Password:</label>
+                        <label for="password" class = "label">Lösenord:</label><br>
                         <input type="password" name="password" id="password" required>
                     </div>
                     <div>
-                        <input type="submit" value="Login">
+                        <br><input type="submit" value="Logga in">
                     </div>
 
                 </fieldset>
-                    
-                
-            </form>
-        </div>
 
-        <div id ="Nologin">
-            <a href ="register.html">Don't have an Account?</a>
-            
+                <div id ="login">
+                    <a href ="register.html">Har du inget konto? Skapa ett konto!</a>
+                </div>
+
+            </form>
+          </div>
         </div>
-                                    
-        
+      </div>
+
+
     </body>
 </html>
