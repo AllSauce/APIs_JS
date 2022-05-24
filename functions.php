@@ -2,16 +2,16 @@
 
 include("connection.php");
 
-function check_login($con){
+function check_login(){
     if(isset($_SESSION['user_id'])){
         //$user_id = $_SESSION['user_id'];
         //$query = "SELECT * FROM users WHERE userid = '$user_id'";
         //$result = $con->query($query);
         //$user_data = $result->fetchArray();
-        return;
+        return true;
     }
     else{
-        header("Location: login.html");
+        return false;
         die;
     }
 }

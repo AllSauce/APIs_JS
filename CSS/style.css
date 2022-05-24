@@ -83,3 +83,7 @@ p.small-body {
     width: 400px;
     margin-top: 10px;
 }
+
+#comments {
+  text-align: center;
+}
