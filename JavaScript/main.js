@@ -1,11 +1,34 @@
-const pMap = L.map('pMap').setView([51.505, -0.09], 13);
+const apiKey = "AAPK19437b5f16dd406c8cc517fcda4e9522knv4OpcC0ofIyHNxLBI1Jm6YeBfnFIwYKo5AN1XCHhnxHgJAHKdyNSN7lrznBqDp";
+    const basemapEnum = "ArcGIS:LightGray";
 
-const attribution =
-'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-const tileUrl = 'https://{s}.tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png';
-  const tiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=a0b486d5-1bb7-4d20-a04f-a40912310009', {
-	maxZoom: 20,
-	attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-});
-  tiles.addTo(pMap);
+
+    const pMap = L.map("pMap", {
+      minZoom: 2
+    }).setView([59.858,17.647], 9);
+
+    L.esri.Vector.vectorBasemapLayer(basemapEnum, {
+      apiKey: apiKey
+    }).addTo(pMap);
+
+    var icon = L.icon({
+        iconUrl: 'img/gym-icon.png',
+        iconSize: [27, 31],
+        iconAnchor: [13.5, 17.5],
+        popupAnchor: [0, -11]
+      });
+
+     var markers = L.esri
+      .featureLayer({
+        url: "https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Airports28062017/FeatureServer/0",
+        pointToLayer: function (geojson, latlng) {
+      return L.marker(latlng, {
+        icon: icon
+      });
+    }
+  }).addTo(pMap);
+
+
+ markers.bindPopup(function (layer) {
+ return L.Util.template('<p><strong>{name}</strong> located in {iso_country}</p>', layer.feature.properties);
+ });
