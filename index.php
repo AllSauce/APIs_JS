@@ -4,54 +4,9 @@ include("functions.php");
 session_start();
 check_login();
 
-function str_contain(string $haystack, string $needle): bool {
-  return '' === $needle || false !== strpos($haystack, $needle);
-}
 
-function displayComment($activerow){
-  if(check_login()){
-    if($activerow['UserID'] == $_SESSION['user_id'] || $_SESSION['RoleID'] == 1){
-      echo '<div class = "comment-container">
-      <div class = "comment-header">
-        <div class = "comment-header-right">
-          <h3 id="comment">'.$activerow['Username'].'</h3>
-          <p id="comment">'.$activerow['Text'].'</p>
 
-        </div>
-      </div>
-      <div class = "comment-footer">
-        <div class = "comment-footer-right">
-          <form action = "comment.php" method = "POST">
-            <input type = "hidden" name = "commentid" value = "'.$activerow['CommentID'].'">
-            <input type = "submit" value = "Delete">
-          </form>
-        </div>
-        <hr id="comment">
-      </div>';
-    }
-    else{
-      echo '<div class = "comment-container">
-      <div class = "comment-header">
 
-          <h3 id="comment">Användare: '.$activerow['Username'].'</h3>
-          <p id="comment">'.$activerow['Text'].'</p>
-          <hr id="comment">
-
-      </div>';
-
-    }
-  }
-  else{
-    echo '<div class = "comment-container">
-      <div class = "comment-header">
-        <div class = "comment-header-right">
-          <h3 id="comment">Användare: '.$activerow['Username'].'</h3>
-          <p id="comment">'.$activerow['Text'].'</p>
-          <hr id="comment">
-        </div>
-      </div>';
-  }
-}
 
 ?>
 
@@ -128,7 +83,7 @@ function displayComment($activerow){
     <div class="left-column">
 
       <div>
-        <form action="index.php" method = "POST">
+        <form action="index.php" method = "GET">
           <input type="text" name="search" placeholder="Sök efter kommentarer">
           <input type="submit" id="search-button" value="Sök">
         </form>
@@ -145,7 +100,7 @@ function displayComment($activerow){
     <p>Hjälp andra att hitta rätt utegym! Dela med dig av din upplevelse.</p>
     <br>
       <form action = "comment.php" method = "POST">
-        <textarea name = "comment" rows = "5" cols = "50"></textarea>
+        <textarea name = "comment" rows = "5" cols = "50" required></textarea>
         <br>
         <input type = "submit" value = "Comment">
       </form>
@@ -178,13 +133,13 @@ function displayComment($activerow){
       //Comment section
       echo '<h2>Kommentarer</h2>';
       while($row = $result->fetchArray()){
-        if(isset($_POST['search'])){
-          if(str_contain(strtolower($row['Text']), strtolower($_POST['search'])) || str_contain(strtolower($row['Username']), strtolower($_POST['search']))){
-              displayComment($row);
+        if(isset($_GET['search'])){
+          if(str_contain(strtolower($row['Text']), strtolower($_GET['search'])) || str_contain(strtolower($row['Username']), strtolower($_GET['search'])) || str_contain(strtolower($row['Airfield']), strtolower($_GET['search']))){
+              displayCommentwithplace($row);
           }
         }
         else{
-          displayComment($row);
+          displayCommentwithplace($row);
         }
 
       }

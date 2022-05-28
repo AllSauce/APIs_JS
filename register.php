@@ -14,7 +14,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
     $password = $_POST['password'];
     $email = $_POST['email'];
     
-
+    if(!str_contain($email, '@') || !str_contain($email, '.')){
+        echo "Invalid email";
+        //header("Location: register.html?error=invalidemail");
+        die;
+    }
+    if(strlen($username) < 3 ||strlen($username) > 15){
+        echo "Username too long or too short";
+        header("Location: register.html?error=invalidusername");
+        die;
+    }
     echo gettype($email);
 
     $sql = "SELECT * FROM users WHERE username=?";
@@ -22,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
     $row = $result->fetchArray();
 
     if($row != NULL){
-        header("Location: register.html?error=2");
+        header("Location: register.html?error=usertaken");
         die;
     }
 
@@ -31,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
     $row = $result->fetchArray();
 
     if($row != NULL){
-        header("Location: register.html?error=3");
+        header("Location: register.html?error=emailtaken");
         die;
     }
 
@@ -46,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
     $res = query_get3($con, $sql, $username, $email, $hash);
 
     if(!$res){
-        header("Location: register.html?error=4");
+        header("Location: register.html?error=sqlerror");
         echo "Failed to add to database";
         die;
     }
@@ -56,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ){
 
 }
 else{
-    header("Location: register.html?error=1");
+    header("Location: register.html?error=invalidrequest");
     die;
 }
 
