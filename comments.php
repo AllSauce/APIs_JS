@@ -25,7 +25,7 @@
         
         $airfield = $_GET['airfield'];
         $sql = "SELECT * FROM comments JOIN users ON comments.UserID = users.UserID WHERE Airfield = ? ORDER BY CommentID DESC";
-        echo $sql;
+        
         $result = query_get1($con, $sql, $airfield);
 
         if(check_login()){
