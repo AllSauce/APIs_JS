@@ -4,10 +4,6 @@ include("functions.php");
 session_start();
 check_login();
 
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +20,7 @@ check_login();
       <script src="https://unpkg.com/esri-leaflet@^3.0.8/dist/esri-leaflet.js"></script>
       <script src="https://unpkg.com/esri-leaflet-vector@^3.0.0/dist/esri-leaflet-vector.js"></script>
 
-  <title>Hitta ditt utegym</title>
+  <title>Flightspot</title>
 </head>
 
 <body>
@@ -35,7 +31,7 @@ check_login();
     <div class="header">
     <nav>
         <ul id="main-menu">
-          <li><a href="index.php"><img src="img/utegym-logo.png" id="logo"></a></li>
+          <li><a href="index.php"><img src="img/plane-logo.png" id="logo"></a></li>
           <li><a href="login.php">LOGGA IN</a></li>
           <li><a href="register.php">SKAPA KONTO</a></li>
         </ul>
@@ -47,7 +43,7 @@ check_login();
     <div class="header">
     <nav>
         <ul id="main-menu">
-          <li><a href="index.php"><img src="img/utegym-logo.png" id="logo"></a></li>
+          <li><a href="index.php"><img src="img/plane-logo.png" id="logo"></a></li>
           <li><a href="index.php">HEM</a></li>
           <li><a href="logout.php">LOGGA UT</a></li>
         </ul>
@@ -58,13 +54,13 @@ check_login();
   <div class="row">
     <div class="column">
       <div class="left-column">
-        <h1><b>Hitta ditt utegym i Uppsala</b></h1>
-        <p>Uppsala kommun tillhandahåller +20 utegym runtom Uppsala med omnej. Alla är välkomna att träna utan kostnad!</p>
+        <h1><b>Flightspotting made easy</b></h1>
+        <p>Följ uppdateringar från andra flightspotters över hela världen för de bästa tipsen. Skapa ett konto och börja dela med dig du också!</p>
           <br>
           <br>
         <br>
         <br>
-        <br><p class="small-body">Platsdatan för utegym tillhandahålls av <a href="https://opendata.uppsala.se/" target=”_blank”>Uppsala kommun (CC-BY)</a>.</p>
+        <br><p class="small-body">Platsdatan för flygplatser tillhandhålls av <a href="https://ourairports.com/" target=”_blank”>OurAirports.com (public domain)</a>.</p>
       </div>
     </div>
 
@@ -97,12 +93,12 @@ check_login();
     <div id = commenter>
 
     <h2>Dela med dig av din upplevelse!</h2>
-    <p>Hjälp andra att hitta rätt utegym! Dela med dig av din upplevelse.</p>
+    <p>Nyligen kollat efter flygplan? Dela med dig av dina bästa tips på utsiktsplatser vid flygplatsen, eller vad för plan du såg - och hjälp andra flightspotters.<br><br>Klicka dig vidare till din flygplats på kartan för att lämna en platsspecifik kommentar.</p>
     <br>
       <form action = "comment.php" method = "POST">
         <textarea name = "comment" rows = "5" cols = "50" required></textarea>
         <br>
-        <input type = "submit" value = "Comment">
+        <input type = "submit" value = "Skicka">
       </form>
 
     </div>
@@ -110,8 +106,8 @@ check_login();
   }
   else{
     echo '<div id = "commenter">
-    <h2>Hur var din upplevelse?</h2>
-    <p>Hjälp andra att hitta rätt utegym! Logga in och dela med dig av din upplevelse.</p>
+    <h2>Hjälp andra flightspotters!</h2>
+    <p>Logga in och dela med dig av din flightspotting-upplevelse.</p>
     </div>';
   }
 
