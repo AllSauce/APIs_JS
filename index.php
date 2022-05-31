@@ -131,11 +131,20 @@ check_login();
       while($row = $result->fetchArray()){
         if(isset($_GET['search'])){
           if(str_contain(strtolower($row['Text']), strtolower($_GET['search'])) || str_contain(strtolower($row['Username']), strtolower($_GET['search'])) || str_contain(strtolower($row['Airfield']), strtolower($_GET['search']))){
+            if($row['Airfield'] != null){
               displayCommentwithplace($row);
+            }
+            else {
+              displayComment($row);
+            }
+              
           }
         }
-        else{
+        if($row['Airfield'] != null){
           displayCommentwithplace($row);
+        }
+        else {
+          displayComment($row);
         }
 
       }
