@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
-    <title><?php echo $_GET['Airfield']?> Comments</title>   
+    <title><?php echo $_GET['airfield']?> Comments</title>   
 </head>
 
 
@@ -20,6 +20,9 @@
 
         <?php
         if(!isset($_GET['airfield'])){
+            header("Location: index.php");
+        }
+        if(strlen($_GET['airfield']) != 3){
             header("Location: index.php");
         }
         include("connection.php");
