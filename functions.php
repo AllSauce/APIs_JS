@@ -67,7 +67,7 @@ function displayComment($activerow){
         echo '<div class = "comment-container">
         <div class = "comment-header">
           <div class = "comment-header-right">
-            <h3 id="comment">'.$activerow['Username'].'</h3>
+            <h3 id="comment">Användare: '.$activerow['Username'].'</h3>
             <p id="comment">'.$activerow['Text'].'</p>
   
           </div>
