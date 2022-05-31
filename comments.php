@@ -91,29 +91,17 @@ check_login();
         <div class="column">
           <div class="right-column">
             <div id = comments>
-        <?php
-        echo '<h2>Kommentarer för '.$airfield .'</h2>';
-        if(isset($_SERVER['HTTP_REFERER'])){
-            $referer = $_SERVER['HTTP_REFERER'];
-            echo '
-            <div>
-                <form action="' . $referer . '" method = "GET">
-                    <input type="hidden" name="airfield" value="'.$airfield .'" />
-                    <input type="text" name="search" placeholder="Sök efter kommentarer">
-                    <input type="submit" id="search-button" value="Sök">
-                </form>
-            </div>';
-        }
-        else {
-            echo '
-            <div>
+            <?php
+            echo '<h2>Kommentarer för '.$airfield .'</h2>';        
+              echo '
+              <div>
                 <form action="comments.php" method = "GET">
                     <input type="hidden" name="airfield" value="'.$airfield .'" />
                     <input type="text" name="search" placeholder="Sök efter kommentarer">
                     <input type="submit" id="search-button" value="Sök">
                 </form>
             </div>';
-        }
+        
 
 
         while($row = $result->fetchArray()){
