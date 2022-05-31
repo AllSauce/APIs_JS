@@ -136,16 +136,18 @@ check_login();
             }
             else {
               displayComment($row);
-            }
-              
+            }              
           }
         }
-        if($row['Airfield'] != null){
-          displayCommentwithplace($row);
+        else{
+          if($row['Airfield'] != null){
+            displayCommentwithplace($row);
+          }
+          else {
+            displayComment($row);
+          }
         }
-        else {
-          displayComment($row);
-        }
+        
 
       }
     ?>
