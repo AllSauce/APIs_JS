@@ -19,6 +19,9 @@
 
 
         <?php
+        if(!isset($_GET['airfield'])){
+            header("Location: index.php");
+        }
         include("connection.php");
         include("functions.php");
         session_start();
