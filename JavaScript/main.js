@@ -1,13 +1,23 @@
 const apiKey = "AAPK19437b5f16dd406c8cc517fcda4e9522knv4OpcC0ofIyHNxLBI1Jm6YeBfnFIwYKo5AN1XCHhnxHgJAHKdyNSN7lrznBqDp";
-    const basemapEnum = "ArcGIS:LightGray";
+
+
+    var gray = L.esri.Vector.vectorBasemapLayer('ArcGIS:LightGray', {
+        apikey: apiKey
+      });
+
+    var baseLayers = {
+  Gråskala: gray,
+  Satellit: L.esri.Vector.vectorBasemapLayer('ArcGIS:Imagery', {
+    apikey: apiKey
+  })
+};
 
     const pMap = L.map("pMap", {
-      minZoom: 2
+      minZoom: 2,
+      layers: [gray]
     }).setView([59.75356929265679, 18.073459091832664], 7);
 
-    L.esri.Vector.vectorBasemapLayer(basemapEnum, {
-      apiKey: apiKey
-    }).addTo(pMap);
+    L.control.layers(baseLayers).addTo(pMap);
 
     var icon = L.icon({
         iconUrl: 'img/plane-icon.png',
